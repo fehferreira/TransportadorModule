@@ -13,10 +13,8 @@ public class EntregaService {
 	private EntregaRepository entregaRepository;
 	
 	public VoucherDTO reservaEntrega(EntregaDTO pedidoDTO) {
-		
 		Entrega entrega = Entrega.receberPedido(pedidoDTO);
 		entregaRepository.save(entrega);
-		
 		return VoucherDTO.converterEntregar(entrega);
 	}
 
