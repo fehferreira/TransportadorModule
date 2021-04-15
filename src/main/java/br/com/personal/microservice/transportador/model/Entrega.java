@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.personal.microservice.transportador.controller.dto.EntregaDTO;
+
 @Entity
 public class Entrega {
 
@@ -23,6 +25,15 @@ public class Entrega {
 	private String enderecoOrigem;
 	
 	private String enderecoDestino;
+
+	public Entrega(LocalDate dataParaEntrega, String enderecoDestino, String enderecoOrigem, Long pedidoId,
+			LocalDate previsaoParaEntrega) {
+		this.dataParaBusca = dataParaEntrega;
+		this.enderecoDestino = enderecoDestino;
+		this.enderecoOrigem = enderecoOrigem;
+		this.pedidoId = pedidoId;
+		this.previsaoParaEntrega = previsaoParaEntrega;
+	}
 
 	public Long getId() {
 		return id;
@@ -70,5 +81,10 @@ public class Entrega {
 
 	public void setEnderecoDestino(String enderecoDestino) {
 		this.enderecoDestino = enderecoDestino;
+	}
+
+	public static Entrega receberPedido(EntregaDTO pedidoDTO) {
+		return new Entrega(pedidoDTO.getDataParaEntrega(),pedidoDTO.getEnderecoDestino(),pedidoDTO.getEnderecoOrigem(),
+				pedidoDTO.getPedidoId(),pedidoDTO.getDataParaEntrega().plusDays(1l));
 	}
 }
