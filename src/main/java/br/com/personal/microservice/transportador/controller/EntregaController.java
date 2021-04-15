@@ -1,6 +1,7 @@
 package br.com.personal.microservice.transportador.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ public class EntregaController {
 	private EntregaService entregaService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public VoucherDTO reservaEntrega(EntregaDTO pedidoDTO){
+	public VoucherDTO reservaEntrega(@RequestBody EntregaDTO pedidoDTO){
 		return entregaService.reservaEntrega(pedidoDTO);
 	}
 	

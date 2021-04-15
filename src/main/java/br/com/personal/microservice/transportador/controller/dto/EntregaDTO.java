@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class EntregaDTO {
 
-private Long pedidoId;
+	private Long pedidoId;
 	
 	private LocalDate dataParaEntrega;
 	
